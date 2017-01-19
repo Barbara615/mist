@@ -2,27 +2,27 @@
 
 ## Overview
 
-Currently the most common workflow for big data analytics applications is to pre-process large data sets offline using combination of Apache Spark batch and streaming jobs and then save results into key-value or columnar database. Then enterprise applications use pre-calculated data sets for visualisations, search, email campaigns, reporting and other use cases.  
+Currently, the most common workflow for big data analytics applications is to pre-process large data sets offline using the combination of Apache Spark batch and streaming jobs and then saving results into key-value or columnar database. Then enterprise applications use pre-calculated data sets for visualisations, search, email campaigns and reporting among other use cases.  
 
-However this "classic" architecture has number of limitations. We list those below and highlight how Hydrosphere Mist addresses the issues in the context of advance analytics applications.
+However, this "classic" architecture has a number of limitations. We heve listed tham below and also highlighted how Hydrosphere Mist addresses theese issues in the context of advance analytics applications.
 
 Classic architecture limitations:
  - Not all the data sets could be pre-calculated in advance.
- - No clear API. Enterprise applications has no control over Apache Spark jobs.
+ - No clear API. Enterprise applications have no control over Apache Spark jobs.
  - Shared nothing architecture principle is broken - shared database is used as an API between analytics stack and enterprise applications.
 
 How Hydrosphere Mist helps
- - User can define additional parameters for the job and execute reporting, simulation or prediction jobs on demand using Hydrosphere Mist API.
+ - The user can define additional parameters for the job and execute reporting, simulation or prediction jobs on demand using Hydrosphere Mist API.
  - Applications and services instantly trigger parameterized Apache Spark jobs and receive results via domain specific REST or Messaging API.
  - Every application or service should decide where and how to store/index data set for later use. Hydrosphere Mist enforces the right decoupling of these services.
  
-By solving these challenges Hydrosphere Mist enables more advanced and interactive enterprise analytics applications to be built on top of Apache Spark.
+By solving these challenges, Hydrosphere Mist enables more advanced and interactive enterprise analytics applications to be built on top of Apache Spark.
 
-Please note in this use case we are not talking about low latency job execution. Obviously the main purpose of using Apache Spark is to process large data sets. Large data sets processing could not be low latency. Hydrosphere Mist garanties instant job start by managing SparkContexts and provides API layer on top of that. 
-For realtime applications with low latency and high throughput built on top of machine learning models trained in by Apache Spark please refer to the use case [Realtime Machine Learning Applications](/docs/use-cases/ml-realtime.md).
+Please note that in this use case, we are not talking about low latency job execution. Obviously, the primary purpose of using Apache Spark is to process large data sets. Large data sets processing could not be low latency. Hydrosphere Mist guarantees instant job start by managing SparkContexts and providing API layer on top of that. 
+For real-time applications with low latency and high throughput built on top of machine learning models trained in by Apache Spark, please refer to the use case [Realtime Machine Learning Applications](/docs/use-cases/ml-realtime.md).
 
 ## Tutorial
-In this tutorial we will take the basic Apache Spark example, extend it to more realistic use case and deploy it as a service using Hydrosphere Mist.
+In this tutorial, we will take the basic Apache Spark example, extend it to a more realistic use case and deploy it as a service using Hydrosphere Mist.
 
 ### (1/6) Taking basic Apache Spark text search example
 
@@ -43,7 +43,7 @@ errors.filter(col("line").like("%MySQL%")).collect()
 ````
 
 ### (2/6) Mistifying Spark program
-As you see our original Apache Spark program has hardcoded ERROR and MySQL filter strings. Obviously in order to provide a useful log analytics application for the end users it makes sense to expose these parameters in user interface. UI application would pass it through Hydrosphere Mist right into Apache Spark program. Also even more realistic use case might have additional noise filtering using pre-build machine learning models.
+As you see, our original Apache Spark program has hardcoded ERROR and MySQL filter strings. Obviously, in order to provide a useful log analytics application for the end users, it makes sense to expose these parameters in user interface. UI application would pass it through Hydrosphere Mist right into the Apache Spark program. Also, an even more realistic use case might have additional noise filtering using pre-build machine learning models.
 
 It takes 3 lines of code to Mistify the program.
 
@@ -109,11 +109,11 @@ sbt package
 cp ./target/scala-2.11/search-job.jar ./jobs
 ```
 
-That’s it - all that you need to deploy a job is to copy it to the local or HDFS directory Mist has access to. The resulting configuration & deployment scheme looks as following:
+That’s it - all that you need to deploy a job is to copy it into the local or HDFS directory which Mist can access. The resulting configuration & deployment scheme looks like this;
 
 ![Mist Configuration Scheme](http://dv9c7babquml0.cloudfront.net/docs-images/mist-config-scheme.png)
 
-Please note that Mist is a service, so it is not required to be restarted every time you update / deploy a new job or edit Router config. So you can iterate multiple times without restarting Mist. 
+Please note that Mist is a service. So, you are not required to restarted it every time you update / deploy a new job or edit Router config. You can iterate multiple times without restarting Mist. 
 
 ### (6/6) Testing
 
@@ -133,7 +133,7 @@ curl --header "Content-Type: application/json" -X POST http://localhost:2003/api
 Also you could use Mist web console to test/debug routes.
 
 ### Summary
-This relatively basic tutorial could be easily extended to support various of enterprise analytics applications such as reporting, simulation (pricing, bank stress testing, taxi rides), forecasting (ad campaign, energy savings, others), ad-hoc analytics tools for business users (hosted notebooks - smart web apps for business users), and others. The technical similarity of these application is Hydrosphere Mist / Apache Spark job exposed as an API to the client application.
+This relatively basic tutorial could be easily extended to support variety of enterprise analytics applications such as reporting, simulation (pricing, bank stress testing, taxi rides), forecasting (ad campaign, energy savings, others), ad-hoc analytics tools for business users (hosted notebooks - smart web apps for business users), and others. The technical similarity of these application is Hydrosphere Mist / Apache Spark job exposed as an API to the client application.
 
 ### What’s next?
-Consider one more use case - what if you would like to process logs in Apache Streaming and alert web application in reactive way. Learn how to build such kind of applications with Hydrosphere Mist in the [next section](/docs/use-cases/reactive.md).
+Consider one more use case - what if you would like to process logs in Apache Streaming and alert web application in reactive way? Learn how to build such types of applications with Hydrosphere Mist in the [next section](/docs/use-cases/reactive.md).
