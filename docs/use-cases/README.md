@@ -16,11 +16,11 @@ Forecasting (ad campaign, energy savings, others)
 Ad-hoc analytics tools for business users (hosted notebooks - web apps for business users)
 
 ### Read More
-Please check out detailed overview and coding tutorial for [Enterprise Analytics Applications](/docs/use-cases/enterprise-analytics.md).
+Please check out the detailed overview and coding tutorial for [Enterprise Analytics Applications](/docs/use-cases/enterprise-analytics.md).
 
-## (2) Realtime Machine Learning Applications
+## (2) Real-time Machine Learning Applications
 ### Technical nature
-Machine learning models trained in Apache Spark MLLib or other ML framework could be automatically  deployed as a synchronous low latency web services and used for a single row scoring (or serving).
+Machine learning models trained in Apache Spark MLLib or another ML framework could automatically be deployed as a synchronous low latency web services and used for a single row scoring (or serving).
 ### Examples
 Fraud detection
 
@@ -52,7 +52,7 @@ Proactive monitoring
 Search (building search index from the filtered stream)
 
 ### Read More
-Please check out detailed overview and coding tutorial for [Reactive Applications](/docs/use-cases/reactive.md).
+Please check out the detailed overview and coding tutorial for [Reactive Applications](/docs/use-cases/reactive.md).
 
 ## What's next
 
